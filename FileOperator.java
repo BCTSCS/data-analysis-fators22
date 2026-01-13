@@ -16,6 +16,7 @@ public class FileOperator {
                System.out.println("File created");
         }
         catch (FileNotFoundException e) {
+            e.printStackTrace();
      
             System.out.println("File not found. Please enter a valid file.");
         }
