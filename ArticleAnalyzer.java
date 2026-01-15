@@ -20,12 +20,14 @@ public class ArticleAnalyzer {
 
     }
     public static void main(String[] args) {
-        ArticleAnalyzer analyzer = new ArticleAnalyzer();
-        ArrayList<String> content= FileOperator.getStringList("data.txt");
-        for(String line : content){
+       ArticleAnalyzer riano = new ArticleAnalyzer();
+       ArrayList<String> lines= FileOperator.getStringList("data.txt");
+       String line =lines.get(0);
+       Article a=riano.parseJson(line);
+       System.out.println(a);
 
-          analyzer.addArticle(analyzer.parseJson(line));
-        }
+       
+
 
     }
 
@@ -40,39 +42,23 @@ public class ArticleAnalyzer {
     public Article parseJson(String jsonLine){
  
         Article result;
-         Pattern l = Pattern.compile("\"link\":\\s*\"([^\"]+)\"");
-    Pattern c = Pattern.compile("\"category\":\\s*\"([^\"]+)\"");
-    Pattern h = Pattern.compile("\"headline\":\\s*\"([^\"]+)\"");
-    Pattern d = Pattern.compile("\"short_description\":\\s*\"([^\"]+)\"");
-    Pattern a = Pattern.compile("\"authors\":\\s*\"([^\"]+)\"");
-    Pattern t = Pattern.compile("\"date\":\\s*\"([^\"]+)\"");
+        Pattern l = Pattern.compile("\"link\":\\s*\"([^\"]+)\"");  //regex to extract words
+        Matcher lm =l.matcher(jsonLine); //parameter - line of text
+         String lt = lm.find() ? lm.group(1) : ""; //extract the destined part
+        result=new Article(lt, "", "", "", "","");
 
-    Matcher lm = l.matcher(jsonLine);
-    Matcher cm = c.matcher(jsonLine);
-    Matcher hm = h.matcher(jsonLine);
-    Matcher dm = d.matcher(jsonLine);
-    Matcher am = a.matcher(jsonLine);
-    Matcher tm = t.matcher(jsonLine);
-
-    // matcher.group(1) now retrieves the text inside the parentheses
-    String link = lm.find() ? lm.group(1) : " ";
-    String cat  = cm.find() ? cm.group(1) : " ";
-    String he   = hm.find() ? hm.group(1) : " ";
-    String dsc  = dm.find() ? dm.group(1) : " ";
-    String au   = am.find() ? am.group(1) : " ";
-    String time = tm.find() ? tm.group(1) : " ";
-
-     result = new Article(link, cat, dsc, he, au, time);
-      System.out.println(he + "---- " + dsc);
     return result;
 }
 
  
     public String removeStopWords(String text){
+        
         String result="";
-
-
+  
+       
         return result;
+
+
     } //remove stop words from Description
 
 
