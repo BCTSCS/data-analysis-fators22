@@ -7,12 +7,11 @@ public class Re {
         boolean r=text.matches(re);  
         System.out.println(r);
            //part2
-        String re2="#[A-Za-z]+";
+        String re2=".*#[A-Za-z]+.*";
         String text2="ABBBBBBBBA";
-        boolean r2=text.matches(re);  
         //read posts.txt
         //Step 1 File Operator obj
-        ArrayList<String> posts= FileOperator.getStringList("data-analysis-fators22/posts.txt");
+        ArrayList<String> posts= FileOperator.getStringList("posts.txt");
       
         System.out.println(posts);
         //iterate each post and find #\w

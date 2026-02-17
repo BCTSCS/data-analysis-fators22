@@ -8,7 +8,7 @@ public class Article {
     
     @Override
     public String toString() {
-        return  "Link " + link+ " HeadLine"+ headline + ", description " + description;
+        return   " description " + description;
     }
     public Article(String link, String headline, String category, String description, String author, String date) {
         this.link = link;
